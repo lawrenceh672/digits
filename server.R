@@ -12,14 +12,17 @@ library(graphics)
 
 # Define server logic required to draw a histogram
 shinyServer(function(input, output, session) {
-   
+  data_loaded <- 0
+  sample_size <- 42000  #default 42000 all the training samples
+  rect(0,0,10,10, border="red", col = "blue") #blue is not loaded
+  text(0,0, "Not Loaded")
+  
   output$numbers <- renderPlot({
   })
   
   observeEvent(input$load_button, {
-    session$sendCustomMessage(type = 'testmessage',
-                              message = 'Thank you for clicking')
     #draw a green box
-    rect(100, 400, 125, 450, col = "green", border = "blue") # coloured
+    rect(0,0,100,100, border="green", col = "green")
+    data_loaded <- 1 #now its true, presumably.
   })
 })
