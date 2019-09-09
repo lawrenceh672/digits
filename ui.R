@@ -10,15 +10,14 @@ shinyUI(
     # Sidebar with a slider input for number of sample, all sqaured
     sidebarLayout(
       sidebarPanel(
-        h3("Load the data set"),
-        submitButton("Load Data"),
+        textInput(inputID="file_path", "path", value="\data\train.csv"),
         h3("Number of samples to start with"),
         sliderInput("samples","Number of samples:",min = 1,max = 10,value = 3)
         ),
-    
-    #Draw the
-    mainPanel(
-      plotOutput("numbers"),
-      h3("sample Size"),
-      textOutput("samples")
-))))
+      #Draw the
+      mainPanel(
+        plotOutput(outputID = "status")
+      )
+    )
+  )
+)
